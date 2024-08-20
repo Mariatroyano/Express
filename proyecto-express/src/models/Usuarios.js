@@ -1,54 +1,36 @@
-const {Sequelize} = require("../consfig/database")
-const {DataTypes} = require("sequelize")
+const { sequelize } = require("../config/database");
+const { DataTypes } = require("sequelize");
 
-const usuario = Sequelize.define(
-    "usuario",
-    {
-        id_usuario:{
-            type:DataTypes.INTEGER,
-            autoIncrement:true,
-            primaryKey:true
-        }
+const Usuario = sequelize.define(
+  "Usuario",
+  {
+    UID_Usuario: {
+      type: DataTypes.STRING(255),
+      primaryKey: true,
     },
-    {
-        name:{
-            type:DataTypes.STRING(255),
-            allowNull:false,
-            unique:false,
-            defaulValue:"valor por defecto"
-        }
+    Nombre: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
     },
-    {
-        email: {
-            type: DataTypes.STRING(255),
-            allowNull: false,
-            unique: true, 
-        }
+    Email: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+      unique: true,
     },
-    {
-        phone: {
-            type: DataTypes.STRING(20),
-            allowNull: false,
-        },
+    Telefono: {
+      type: DataTypes.STRING(30),
+    },
+    Direccion: {
+      type: DataTypes.TEXT,
+    },
+    EstadoCuenta: {
+      type: DataTypes.INTEGER,
+    },
+  },
+  {
+    tableName: "Usuario",
+    timestamps: false,
+  }
+);
 
-    },
-    {
-        address: {
-            type: DataTypes.STRING(255),
-            allowNull: false,
-        }
-    },
-    {
-        start_date: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaulValue:DataTypes.NOW
-        }
-    },
-    {
-     
-        tableName: "usuario", 
-        timestamps: false, 
-    }
-)
-module.exports( usuario)
+module.exports = Usuario;
