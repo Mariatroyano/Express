@@ -11,14 +11,15 @@ const Ventas = sequelize.define(
     },
     ID_Factura: {
       type: DataTypes.INTEGER,
+      onDelete: "CASCADE",
       references: {
-        model: "FacturaVentas", // Nombre del modelo al que hace referencia
-        key: "ID_Factura", // Clave foránea
+        model: "FacturaVentas",
+        key: "ID_Factura",
       },
     },
     FechaVenta: {
       type: DataTypes.DATE,
-      allowNull: false,
+      defaultValue: DataTypes.NOW, // Asigna la fecha y hora actuales por defecto
     },
   },
   {

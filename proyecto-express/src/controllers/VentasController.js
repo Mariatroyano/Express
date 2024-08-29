@@ -1,7 +1,6 @@
 
 const Venta = require("../models/Ventas");
 
-// Obtener todas las ventas
 const VentasGet = async (req, res) => {
   try {
     const ventas = await Venta.findAll();
@@ -10,8 +9,8 @@ const VentasGet = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+//............................................................................................................
 
-// Crear una nueva venta
 const VentasPost = async (req, res) => {
   const {
     ID_Venta,
@@ -21,9 +20,9 @@ const VentasPost = async (req, res) => {
 
   try {
     const NewVenta = await Venta.create({
-        ID_Venta,
-        ID_Factura,
-        FechaVenta,
+      ID_Venta,
+      ID_Factura,
+      FechaVenta,
     });
     res.status(200).json(NewVenta);
   } catch (error) {

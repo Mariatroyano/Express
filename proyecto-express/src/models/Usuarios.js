@@ -10,11 +10,11 @@ const Usuario = sequelize.define(
     },
     Nombre: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      // allowNull: false,
     },
     Email: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      // allowNull: false,
       unique: true,
     },
     Telefono: {
@@ -25,6 +25,7 @@ const Usuario = sequelize.define(
     },
     EstadoCuenta: {
       type: DataTypes.INTEGER,
+      // allowNull: false,
     },
   },
   {

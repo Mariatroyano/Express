@@ -9,17 +9,16 @@ const CarritoCompras = sequelize.define(
       autoIncrement: true,
       primaryKey: true,
     },
-    EstadoFactura: {
-      type: DataTypes.STRING(50),
-    },
     ID_Productos: {
       type: DataTypes.JSONB,
     },
     UID_Usuario: {
       type: DataTypes.STRING(255),
+      allowNull: false,
+      onDelete: "CASCADE",
       references: {
-        model: "Usuario", // Nombre del modelo al que hace referencia
-        key: "UID_Usuario", // Clave foránea
+        model: "Usuario",
+        key: "UID_Usuario",
       },
     },
   },

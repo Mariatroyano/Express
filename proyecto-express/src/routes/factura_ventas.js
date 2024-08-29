@@ -1,10 +1,11 @@
 const express = require("express")
-const { FacturaVentasGet, FacturaVentasPost} =require("../controllers/factura_ventasController")
-const { Routes } = require("react-router-dom")
+const { FacturaVentasGet, FacturaVentasPost,  FacturaVentasPut} =require("../controllers/factura_ventasController")
 
 const router = express.Router()
 
 router.get("/",  FacturaVentasGet)
 router.post("/", FacturaVentasPost)
+router.put("/", FacturaVentasPut)
 
-module.exports = Routes
+
+module.exports = router

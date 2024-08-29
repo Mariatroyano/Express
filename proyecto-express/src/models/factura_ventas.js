@@ -10,20 +10,31 @@ const FacturaVentas = sequelize.define(
       primaryKey: true,
     },
     EstadoFactura: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     FechaPedido: {
       type: DataTypes.DATE,
       allowNull: false,
     },
+    UID_Usuario: {
+      type: DataTypes.STRING(255),
+      onDelete: "CASCADE",
+      references: {
+        model: "Usuario",
+        key: "UID_Usuario",
+      },
+    },
+    ID_Productos: {
+      type: DataTypes.JSONB,
+    },
     PrecioTotal: {
       type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
     },
   },
   {
     tableName: "FacturaVentas",
-    timestamps: false,
+    timestamps: false, // Disabling the timestamps
   }
 );
 
