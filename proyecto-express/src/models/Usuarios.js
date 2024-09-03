@@ -25,7 +25,7 @@ const Usuario = sequelize.define(
     },
     EstadoCuenta: {
       type: DataTypes.INTEGER,
-      // allowNull: false,
+      defaultValue: 1,
     },
   },
   {

@@ -1,22 +1,26 @@
 {
   "name": "proyecto-express",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "productos": "json-server --watch Productos.json --port 5813",
+    "nodemon": "nodemon index.js",
+    "start": "npm-run-all --parallel nodemon productos"
   },
   "author": "",
   "license": "ISC",
   "keywords": [],
-  "description": "",
   "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "firebase": "^10.13.0",
     "pg": "^8.12.0",
-    "sequelize": "^6.37.3"
+    "sequelize": "^6.37.3",
+    "json-server": "^1.0.0-beta.1",
+    "npm-run-all": "^4.1.5"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"
