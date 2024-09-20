@@ -9,11 +9,25 @@ const Usuariosget = async (req, res) => {
   }
 };
 //.......................................................................................................................
+const UsuariosgetById = async (req, res) => {
+  try {
+    const { id_usuario } = req.params;
+    const users = await Usuario.findByPk(id_usuario);
+    if (users) {
+      res.json(users);
+    } else {
+      res.json({ mesaje: "no existe el usuario" });
+    }
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+//.......................................................................................................................
 
 const UsuariosPost = async (req, res) => {
   const { UID_Usuario, Nombre, Email, Telefono, Direccion, EstadoCuenta } =
     req.body;
-  console.log(req.body)
+  console.log(req.body);
   try {
     const newUsuario = await Usuario.create({
       UID_Usuario,
@@ -24,9 +38,9 @@ const UsuariosPost = async (req, res) => {
       EstadoCuenta,
     });
     res.status(200).json(newUsuario);
-  } catch (error){
+  } catch (error) {
     res.status(400).json({ message: error.message });
-    console.log(error.message)
+    console.log(error.message);
   }
 };
 //..................................................................................................................
@@ -38,7 +52,7 @@ const UsuariosPut = async (req, res) => {
 
   try {
     const putUsuario = await Usuario.findByPk(UID_Usuario);
-    
+
     if (putUsuario) {
       console.log(req.body);
       putUsuario.Nombre = Nombre;
@@ -76,4 +90,10 @@ const UsuariosDelete = async (req, res) => {
 
 //:...................................................................
 
-module.exports = { Usuariosget, UsuariosPost, UsuariosPut, UsuariosDelete };
+module.exports = {
+  Usuariosget,
+  UsuariosPost,
+  UsuariosPut,
+  UsuariosDelete,
+  UsuariosgetById,
+};

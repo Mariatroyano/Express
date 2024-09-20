@@ -1,5 +1,5 @@
 const { sequelize } = require("../config/database");
-const { DataTypes } = require("sequelize");
+const { DataTypes, DATE } = require("sequelize");
 
 const FacturaVentas = sequelize.define(
   "FacturaVentas",
@@ -15,7 +15,7 @@ const FacturaVentas = sequelize.define(
     },
     FechaPedido: {
       type: DataTypes.DATE,
-      allowNull: false,
+      defaultValue: new Date(),
     },
     UID_Usuario: {
       type: DataTypes.STRING(255),

@@ -18,7 +18,6 @@ const FacturaVentasPost = async (req, res) => {
   try {
     const nuevaFactura = await FacturaVentas.create({
       EstadoFactura,
-      FechaPedido,
       UID_Usuario,
       ID_Productos,
       PrecioTotal,
